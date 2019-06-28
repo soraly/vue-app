@@ -14,7 +14,15 @@ export default new Vuex.Store({
     },
     mutations: {
         increment(state,payload){
-            state.count+=payload.count
+            setTimeout(()=>{
+                state.count+=payload.count 
+            },1000)
+        },
+        incrementAgain(state,payload){
+            setTimeout(()=>{
+                state.count+=payload.count 
+            },1000)
+            
         },
         addFruit(state,item,val){
             console.log(item,val,'item')
@@ -26,5 +34,14 @@ export default new Vuex.Store({
         getNameById: state=>((id)=>{
             return state.goodsList.find(goods=>goods.id===id);
         })
+    },
+    actions: {
+        //action在异步的回调函数里面提交mutation，这样可以精确记录mutation对应的事件什么时候发生
+        increment({commit},payload){
+            setTimeout(()=>{
+                commit('increment',payload);    
+            },1500)
+            
+        }
     }
 })

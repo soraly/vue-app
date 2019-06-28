@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/mutation.vue'
+import HelloWorld from './components/action.vue'
 import store from './store/base.js'
 
 export default {
