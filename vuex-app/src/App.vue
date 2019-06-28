@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/action.vue'
-import store from './store/base.js'
+import HelloWorld from './components/modules.vue'
+import store from './store/moduleStore.js'
 
 export default {
   name: 'app',
