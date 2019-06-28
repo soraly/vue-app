@@ -1,25 +1,25 @@
 <template>
   <div id="app">
     
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Demo msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/namespaceModules.vue'
-import store from './store/namespace.js'
+import Demo from './officialDemos/count.vue'
+//import store from './store/namespace.js'
 
-store.registerModule('c',{
-  state: {
-    name: 'xiaomi'
-  }
-})
+// 注册命名空间
+// store.registerModule('c',{
+//   state: {
+//     name: 'xiaomi'
+//   }
+// })
 
 export default {
   name: 'app',
-  store,
   components: {
-    HelloWorld
+    Demo
   }
 }
 </script>
