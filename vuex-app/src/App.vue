@@ -6,8 +6,14 @@
 </template>
 
 <script>
-import HelloWorld from './components/modules.vue'
-import store from './store/moduleStore.js'
+import HelloWorld from './components/namespaceModules.vue'
+import store from './store/namespace.js'
+
+store.registerModule('c',{
+  state: {
+    name: 'xiaomi'
+  }
+})
 
 export default {
   name: 'app',
