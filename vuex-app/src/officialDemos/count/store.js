@@ -32,7 +32,10 @@ const getters = {
         return state.count
     },
     recentHistory(state){
-        return state.recentHistory.join('，，')
+        var limit = 5;
+        const end = state.recentHistory.length;
+        const start = end-limit < 0 ? 0 : end-limit;
+        return state.recentHistory.slice(start,end).join(',')
     }
 }
 
