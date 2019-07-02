@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Demo from './officialDemos/shopCart/main.vue'
+import Demo from './officialDemos/shopCartByDemo/main.vue'
 //import store from './store/namespace.js'
 
 // 注册命名空间
