@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 
-import store from './officialDemos/shopCartByDemo/store'
+import store from './officialDemos/todoMVC/store'
 
-import test from './test/myPromise'
+//import test from './test/myPromise'
 
 Vue.config.productionTip = false
 

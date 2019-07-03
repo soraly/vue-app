@@ -4,7 +4,7 @@
         <hr>
         <h3>Products</h3>
         <ul>
-            <li v-for='(item) in goodsList' :class='{"empty": !item.stock}'>
+            <li v-for='(item) in goodsList' :class='{"empty": !item.stock}' :key='item.id'>
                 <span>
                     {{item.name}}
                 </span>

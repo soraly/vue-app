@@ -5,6 +5,7 @@
         <a href="">活动列表</a>
         <a href="">活动管理</a>
       </div>
+      <!-- <p style="background: #ddd;height: 10px;width: 100%"></p> -->
       
     </div>
     <Demo msg="Welcome to Your Vue.js App"/>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import Demo from './officialDemos/shopCartByDemo/main.vue'
+import Demo from './officialDemos/todoMVC/main.vue'
 //import store from './store/namespace.js'
 
 // 注册命名空间
@@ -48,7 +49,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 </style>
