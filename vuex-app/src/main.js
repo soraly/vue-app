@@ -4,6 +4,8 @@ import App from './App.vue'
 
 import store from './officialDemos/shopCartByDemo/store'
 
+import test from './test/myPromise'
+
 Vue.config.productionTip = false
 
 new Vue({

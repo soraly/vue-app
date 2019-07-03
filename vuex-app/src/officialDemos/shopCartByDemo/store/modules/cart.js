@@ -3,36 +3,26 @@ const state = {
     items: []
 }
 const getters = {
-    items(state){
+    items(state) {
         return state.items
     },
-    finalPrice(state){
-        return state.items.reduce((base,cur)=>{
-            base+=Number(cur.price)*cur.quantity;
-            return base
-        },0)
+    finalPrice(state) {
+        return state.items.reduce((base, cur) => base += Number(cur.price) * cur.quantity, 0);
+        
     }
 }
+
 const mutations = {
-    addItem(state,item){
+    pushProductToCart(state, item) {
         state.items.push(item);
     },
-    increase(state,item){
+    incrementItemQuantity(state, item) {
         item.quantity++;
-    }
-}
-const actions = {
-    pushProductToCart(context,item){
-        context.commit('addItem', item);
-    },
-    incrementItemQuantity(context,item){
-        context.commit('increase',item)
     }
 }
 
 export default {
     namespaced: true,
-    actions,
     mutations,
     state,
     getters

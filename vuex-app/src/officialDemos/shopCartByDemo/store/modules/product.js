@@ -12,7 +12,7 @@ const mutations = {
     setProducts(state, prop) {
         state.all = prop
     },
-    decrementProductStock(state, prop){
+    decrementProductStock(state, prop) {
         prop.stock--
     }
 }
@@ -25,13 +25,13 @@ const actions = {
 
     addProductToCart(context, product) {
         //1. 减少all的库存 2.将item添加到product 3.计算total
-        context.commit('decrementProductStock',product);
-        
+        context.commit('decrementProductStock', product);
+
         //判断购物车里是否有该产品
         var item = context.rootState.cart.items.find(item => item.id === product.id)
-        
+
         if (item) {
-            context.dispatch('cart/incrementItemQuantity', item,{root: true});
+            context.commit('cart/incrementItemQuantity', item, { root: true });
         } else {
             var obj = {
                 title: product.title,
@@ -39,7 +39,7 @@ const actions = {
                 price: product.price,
                 quantity: 1
             }
-            context.dispatch('cart/pushProductToCart', obj, { root: true });
+            context.commit('cart/pushProductToCart', obj, { root: true });
         }
 
     }
