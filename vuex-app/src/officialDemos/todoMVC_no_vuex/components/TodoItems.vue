@@ -3,7 +3,7 @@
     <ul class="todo-list">
       <li class="todo" v-for='item in itemList' :key='item.id'>
         <div class="view">
-          <input type="checkbox" class="toggle" @click='changeTodoState(item)' :checked='item.checked'>
+          <input type="checkbox" class="toggle" @click='changeState(item)' :checked='item.check'>
           <label :class='{complete: item.state=="complete"}'>{{item.name}}</label>
           <button @click='removeTodo(item)'>x</button>
         </div>
@@ -15,13 +15,13 @@
         </span>
         <ul class="filters">
             <li>
-                <a @click="choseState('all')" :class="{selected: state=='all'}">All</a>
+                <a @click="state='all'"  href="javascript:;" :class="{selected: state=='all'}">All</a>
             </li>
             <li  >
-                <a @click="choseState('undone')" :class="{selected: state=='undone'}">Active</a>
+                <a @click="state='active'" :class="{selected: state=='active'}">Active</a>
             </li>
             <li>
-                <a @click="choseState('complete')" :class="{selected: state=='complete'}">Completed</a>
+                <a  @click="state='complete'" :class="{selected: state=='complete'}">Completed</a>
             </li>
         </ul>
     </p>
@@ -107,7 +107,6 @@ input.toggle {
     border: 1px solid transparent;
     padding: 5px;
     text-decoration: none;
-    cursor: pointer;
 }
 .filters li a.selected {
     border-color: rgba(175, 47, 47, 0.2);
@@ -137,34 +136,51 @@ input.toggle {
 </style>
 
 <script>
-import {mapGetters, mapActions, mapState} from 'vuex'
-
 export default {
     data(){
         return {
-            
+            state: 'all'
         }
     },
+    props: ['todoList'],
     computed: {
-        ...mapGetters('todolist',{
-            itemList: 'itemList',
-            undoneCount: 'undoneCount'
-        }),
-        ...mapState('todolist',{
-            state: 'todoState'
-        })
+        itemList(){
+            if(this.state=='all'){
+                return this.todoList
+            }
+             if(this.state=='active'){
+                return this.todoList.filter(item=>item.state=='undone')
+            }
+             if(this.state=='complete'){
+                return this.todoList.filter(item=>item.state=='complete')
+            }
+        },
+        undoneCount(){
+            return this.todoList.filter(item=>item.state=='undone').length || 0
+        }
     },
     methods: {
-        ...mapActions('todolist',[
-            'changeTodoState',
-            'choseState',
-            'removeTodo'
-        ]),
+        changeState(item){
+            this.$set(item, 'check', !item.check);
+            if(item.state=='undone'){
+                item.state = 'complete'
+            }else {
+                item.state = 'undone'
+            }
+            sessionStorage.todoList = JSON.stringify(this.todoList);
+        },
+        removeTodo(todo){
+            var index;
+            this.todoList.forEach((item,key)=>{
+                item.id == todo.id && (index=key);
+            })
+            this.todoList.splice(index,1);
+            sessionStorage.todoList = JSON.stringify(this.todoList);
+        }
     },
     created() {
-        if(sessionStorage.itemList){
-            this.$store.commit('todolist/setTodoList',JSON.parse(sessionStorage.itemList))
-        }
+        
+        //console.log(this.todoList,'todoList')
     },
 };
 </script>
