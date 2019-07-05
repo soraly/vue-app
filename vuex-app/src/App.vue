@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Demo from './officialDemos/todoMVC/main.vue'
+import Demo from './officialDemos/todoMVC_no_vuex_byYYX/main.vue'
 //import store from './store/namespace.js'
 
 // 注册命名空间

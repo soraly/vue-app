@@ -13,6 +13,7 @@ var fen = {
 var num = fen.sayName.bind(xiang, 1, 2, 3, 4, 5)(100,200);
 console.log(num, 'num')
 
+//by lzx
 Function.prototype.myBind = function (context) {
     context.fn = this;
     if (arguments.length > 1) {
@@ -32,7 +33,7 @@ Function.prototype.myBind = function (context) {
 var num2 = fen.sayName.myBind(xiang,33,44)(55);
 console.log(num2,'num2')
 
-
+//by 宋小菜
 Function.prototype.myBind2 = function (context) {
     if (typeof this !== 'function') {
       throw new TypeError('Error')
@@ -51,3 +52,4 @@ Function.prototype.myBind2 = function (context) {
 
   var num3 = fen.sayName.myBind2(xiang,100,200)(300);
 console.log(num3,'num3')
+
