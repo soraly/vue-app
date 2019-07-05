@@ -4,9 +4,9 @@ import App from './App.vue'
 
 import store from './officialDemos/todoMVC/store'
 
-//import test from './test/myPromise'
+import test from './test/bind.js'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
